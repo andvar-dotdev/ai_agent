@@ -15,7 +15,7 @@ def test(test_cases: list[dict[str, object]]) -> tuple[list[str], list[str]]:
     for test_case in test_cases:
         cases.append(test_case["case"])
         if len(test_case["args"]) == 3:
-            print(f"arrived with test case {test_case["case"]}")
+ #           print(f"arrived with test case {test_case["case"]}")
             results.append(run_python_file(test_case["args"][0], test_case["args"][1], test_case["args"][2]))
         else:
             results.append(run_python_file(test_case["args"][0], test_case["args"][1]))

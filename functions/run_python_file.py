@@ -23,3 +23,28 @@ def run_python_file(working_directory: str, file_path: str, args: list[str] | No
         return f"STDOUT: {result.stdout}\nSTDERR: {result.stderr}"
     except Exception as e:
         return f"Error: executing Python file: {e}"
+
+schema_run_python_file: dict[str, str | dict[str, str | dict[str, str | list[str] | dict[str, dict[str, str | dict[str, str]]]]]] = {
+    "type": "function",
+    "function": {
+        "name": "run_python_file",
+        "description": "Runs the specified python executable relative to the working directory with provided arguments (if provided). It then returns the outputs of STDOUT and STDERR. Should the result give a returncode other than zero, then the non-zero return code is also provided.",
+        "parameters": {
+            "type": "object",
+            "required": ["file_path"],
+            "properties": {
+                "file_path": {
+                    "type": "string",
+                    "description": "Path to the executable python file which is to be run, relative to the working directory"
+                },
+                "args": {
+                    "type": "array",
+                    "description": "List containing strings of the arguments to be passed to the function that is to be run. This object defaults to None if it is not provided.",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

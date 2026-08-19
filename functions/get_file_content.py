@@ -19,3 +19,21 @@ def get_file_content(working_directory: str, file_path: str) -> str:
 
     except Exception as e:
         return f"Error: {e}"
+
+schema_get_file_content: dict[str, str | dict[str, str | dict[str, str | list[str] | dict[str, dict[str, str]]]]] = {
+    "type": "function",
+    "function": {
+        "name": "get_file_content",
+        "description": "Returns the concatenated contents of the file in the specified file path relative to the working directory, up to a maximum of 10000 characters. After 10000 characters, the content is truncated and replaced with a message stating that the rest of the content has been truncated",
+        "parameters": {
+            "type": "object",
+            "required": ["file_path"],
+            "properties": {
+                "file_path": {
+                    "type": "string",
+                    "description": "Path to the file which contents are to be concatenated, relative to the working directory"
+                }
+            }
+        }
+    }
+}
