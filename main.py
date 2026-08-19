@@ -32,7 +32,8 @@ def main() -> None:
     if response.usage == None:
         raise RuntimeError("Usage property of response is None")
     if args.verbose == True:
-        print(f"User prompt: {messages[0]["content"]}")
+        print(f"System prompt: {messages[0]["content"]}")
+        print(f"User prompt: {messages[1]["content"]}")
         print(f"Prompt tokens: {response.usage.prompt_tokens}")
         print(f" Response tokens: {response.usage.completion_tokens}")
 

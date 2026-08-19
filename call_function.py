@@ -15,7 +15,7 @@ available_functions = [
 
 def call_function(tool_call: object, verbose: bool = False) -> dict[str, str | object]:
     function_name: str = tool_call.function.name
-    function_args: dict[str, object] = json.loads(tool_call.function.arguments or f"{}")
+    function_args: dict[str, object] = json.loads(tool_call.function.arguments or "{}")
 
     if verbose:
         print(f" - Calling function: {function_name}({function_args})")
